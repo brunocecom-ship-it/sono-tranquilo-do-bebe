@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sono Tranquilo do Bebê — Guia Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3A3550;
+    --lavender:#8B85B8;
+    --lavender-dark:#5E5789;
+    --lavender-light:#E8E5F5;
+    --peach:#F3A987;
+    --peach-light:#FCE8DE;
+    --skyblue:#8FB8C9;
+    --skyblue-light:#E4F0F3;
+    --cream:#FDF9F3;
+    --gold:#D9A441;
+    --white:#FFFFFF;
+    --gray:#8A8494;
+    --serif:'Lora', serif;
+    --sans:'Outfit', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--serif); color:var(--ink); background:var(--cream); line-height:1.6; overflow-x:hidden;}
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:var(--sans); font-weight:700; color:var(--lavender-dark); letter-spacing:-0.01em;}
+  .nav{position:sticky; top:0; z-index:50; background:rgba(253,249,243,0.88); backdrop-filter:blur(8px); border-bottom:1px solid var(--lavender-light);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{font-family:var(--sans); font-weight:700; font-size:1.05rem; color:var(--lavender-dark); display:flex; align-items:center; gap:8px;}
+  .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--peach); display:inline-block;}
+  .nav-cta{background:var(--lavender-dark); color:var(--white); font-family:var(--sans); font-weight:600; font-size:0.85rem; padding:10px 20px; border-radius:100px; text-decoration:none; transition:transform .15s ease, background .15s ease;}
+  .nav-cta:hover{background:var(--ink); transform:translateY(-1px);}
+  .hero{position:relative; background:linear-gradient(180deg, var(--lavender-dark) 0%, var(--lavender) 62%, var(--cream) 62%); padding:64px 0 0; overflow:hidden;}
+  .hero-inner{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; padding-bottom:70px; position:relative; z-index:2;}
+  .stars{position:absolute; inset:0; z-index:1; pointer-events:none;}
+  .moon{position:absolute; top:38px; right:60px; width:130px; height:130px; border-radius:50%; background:var(--cream); box-shadow:-38px 8px 0 6px var(--lavender-dark); opacity:0.95;}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-weight:600; font-size:0.78rem; letter-spacing:0.14em; color:var(--cream); text-transform:uppercase; margin-bottom:18px;}
+  .eyebrow::before{content:''; width:18px; height:1px; background:var(--peach);}
+  .hero h1{color:var(--white); font-size:2.7rem; line-height:1.12; margin-bottom:18px; max-width:11ch;}
+  .hero h1 em{color:var(--peach); font-style:normal;}
+  .hero p.sub{color:var(--lavender-light); font-family:var(--serif); font-style:italic; font-size:1.1rem; max-width:38ch; margin-bottom:30px;}
+  .hero-actions{display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .btn-primary{background:var(--peach); color:var(--ink); font-family:var(--sans); font-weight:700; font-size:1rem; padding:16px 30px; border-radius:100px; text-decoration:none; box-shadow:0 10px 24px -8px rgba(243,169,135,0.6); transition:transform .15s ease, box-shadow .15s ease; display:inline-block;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 28px -8px rgba(243,169,135,0.75);}
+  .price-tag{font-family:var(--sans); color:var(--cream); font-size:0.9rem;}
+  .price-tag b{font-size:1.3rem; color:var(--white);}
+  .hero-visual{position:relative; z-index:2; display:flex; justify-content:center;}
+  .book-cover{width:250px; border-radius:10px; overflow:hidden; box-shadow:0 30px 60px -20px rgba(58,53,80,0.55), 0 4px 0 rgba(0,0,0,0.05); transform:rotate(3deg); transition:transform .4s ease;}
+  .book-cover:hover{transform:rotate(0deg) translateY(-6px);}
+  section{padding:76px 0;}
+  .eyebrow-mini{font-family:var(--sans); font-weight:600; font-size:0.75rem; letter-spacing:0.14em; color:var(--peach); text-transform:uppercase; margin-bottom:10px; display:block;}
+  .section-title{font-size:1.9rem; margin-bottom:14px; max-width:20ch;}
+  .section-sub{color:var(--gray); font-size:1.02rem; max-width:56ch; margin-bottom:44px;}
+  .pains{background:var(--white);}
+  .pain-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .pain-card{background:var(--cream); border:1px solid var(--lavender-light); border-radius:16px; padding:26px 24px; display:flex; gap:16px; align-items:flex-start;}
+  .pain-mark{font-family:var(--sans); font-weight:800; font-size:1.4rem; color:var(--peach); line-height:1;}
+  .pain-card p{font-size:0.98rem; color:var(--ink);}
+  .contents{background:var(--lavender-light);}
+  .chap-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .chap-card{background:var(--white); border-radius:16px; padding:26px 22px; position:relative; border:1px solid rgba(94,87,137,0.12);}
+  .chap-num{font-family:var(--sans); font-weight:700; font-size:0.78rem; color:var(--white); background:var(--lavender-dark); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .chap-card.bonus .chap-num{background:var(--peach); color:var(--ink);}
+  .chap-card h3{font-size:1.02rem; margin-bottom:6px; color:var(--ink);}
+  .chap-card p{font-size:0.88rem; color:var(--gray);}
+  .forwho{background:var(--white);}
+  .forwho-inner{display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;}
+  .forwho ul{list-style:none;}
+  .forwho li{display:flex; gap:12px; align-items:flex-start; margin-bottom:16px; font-size:1rem;}
+  .forwho li::before{content:'✦'; color:var(--peach); font-size:0.9rem; margin-top:3px;}
+  .forwho-visual{background:var(--cream); border-radius:20px; padding:36px; border:1px solid var(--lavender-light);}
+  .stat{display:flex; align-items:baseline; gap:10px; margin-bottom:22px;}
+  .stat b{font-family:var(--sans); font-size:2.1rem; color:var(--lavender-dark);}
+  .stat span{color:var(--gray); font-size:0.92rem;}
+  .pricing{background:linear-gradient(180deg, var(--cream) 0%, var(--lavender-light) 100%);}
+  .price-card{max-width:460px; margin:0 auto; background:var(--white); border-radius:24px; padding:44px 40px; text-align:center; box-shadow:0 30px 60px -30px rgba(94,87,137,0.35); border:1px solid var(--lavender-light); position:relative;}
+  .price-card .ribbon{position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--peach); color:var(--ink); font-family:var(--sans); font-weight:700; font-size:0.75rem; padding:7px 18px; border-radius:100px; letter-spacing:0.04em; white-space:nowrap;}
+  .price-card h3{font-size:1.3rem; margin:18px 0 6px;}
+  .price-old{color:var(--gray); text-decoration:line-through; font-family:var(--sans); font-size:1rem;}
+  .price-now{font-family:var(--sans); font-weight:800; font-size:3rem; color:var(--lavender-dark); margin:6px 0 4px;}
+  .price-now sup{font-size:1.3rem; top:-1.2em;}
+  .price-note{color:var(--gray); font-size:0.85rem; margin-bottom:26px;}
+  .price-list{list-style:none; text-align:left; margin-bottom:30px;}
+  .price-list li{display:flex; gap:10px; align-items:flex-start; font-size:0.94rem; margin-bottom:12px; color:var(--ink);}
+  .price-list li::before{content:'✓'; color:var(--skyblue); font-weight:700;}
+  .btn-block{display:block; width:100%; text-align:center; background:var(--lavender-dark); color:var(--white); font-family:var(--sans); font-weight:700; padding:17px; border-radius:100px; text-decoration:none; font-size:1.02rem; transition:background .15s ease, transform .15s ease;}
+  .btn-block:hover{background:var(--ink); transform:translateY(-2px);}
+  .price-secure{margin-top:16px; font-size:0.78rem; color:var(--gray);}
+  .faq{background:var(--white);}
+  .faq-item{border-bottom:1px solid var(--lavender-light); padding:22px 0; cursor:pointer;}
+  .faq-q{display:flex; justify-content:space-between; align-items:center; font-family:var(--sans); font-weight:600; font-size:1rem; color:var(--ink);}
+  .faq-q .icon{color:var(--peach); font-size:1.3rem; font-family:var(--sans); transition:transform .2s ease;}
+  .faq-item.open .faq-q .icon{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease, margin-top .25s ease; color:var(--gray); font-size:0.94rem;}
+  .faq-item.open .faq-a{max-height:200px; margin-top:12px;}
+  footer{background:var(--lavender-dark); color:var(--lavender-light); padding:46px 0 30px;}
+  .footer-inner{display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;}
+  footer .brand-f{font-family:var(--sans); font-weight:700; color:var(--white); font-size:1.05rem;}
+  footer p{font-size:0.82rem; max-width:52ch;}
+  footer .fine{font-size:0.72rem; opacity:0.7; margin-top:14px;}
+  @media (max-width: 860px){
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero h1{max-width:none; font-size:2.1rem;}
+    .hero p.sub{margin-left:auto; margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .hero-visual{margin-top:10px;}
+    .moon{display:none;}
+    .pain-grid{grid-template-columns:1fr;}
+    .chap-grid{grid-template-columns:1fr 1fr;}
+    .forwho-inner{grid-template-columns:1fr;}
+  }
+  @media (max-width: 520px){
+    .chap-grid{grid-template-columns:1fr;}
+    .price-card{padding:34px 22px;}
+  }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important;} }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="dot"></span>Sono Tranquilo do Bebê</div>
+    <a href="#comprar" class="nav-cta">Quero o guia</a>
+  </div>
+</nav>
+<header class="hero">
+  <svg class="stars" width="100%" height="100%" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
+    <g fill="#D9A441" opacity="0.85">
+      <circle cx="80" cy="60" r="2"/><circle cx="160" cy="110" r="1.6"/><circle cx="230" cy="50" r="2.2"/>
+      <circle cx="340" cy="90" r="1.4"/><circle cx="420" cy="40" r="2"/><circle cx="500" cy="120" r="1.6"/>
+      <circle cx="120" cy="180" r="1.4"/><circle cx="600" cy="60" r="2"/><circle cx="700" cy="30" r="1.6"/>
+      <circle cx="260" cy="150" r="1.6"/><circle cx="40" cy="140" r="1.4"/><circle cx="380" cy="160" r="1.8"/>
+    </g>
+  </svg>
+  <div class="moon"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Guia digital em PDF · 0 a 24 meses</span>
+      <h1>Noites mais calmas para o seu <em>bebê</em> (e para você)</h1>
+      <p class="sub">Um guia afetivo e prático com rotinas, checklist e planner de sono para ajudar sua família a dormir melhor — sem fórmulas mágicas, sem julgamento.</p>
+      <div class="hero-actions">
+        <a href="#comprar" class="btn-primary">Quero dormir melhor →</a>
+        <div class="price-tag">a partir de <b>R$ 25,90</b></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="book-cover">
+        <svg viewBox="0 0 250 324" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <rect width="250" height="324" fill="#5E5789"/>
+          <rect width="250" height="205" fill="#8B85B8"/>
+          <circle cx="205" cy="55" r="22" fill="#FDF9F3"/>
+          <circle cx="197" cy="48" r="22" fill="#8B85B8"/>
+          <g fill="#D9A441">
+            <circle cx="30" cy="30" r="1.6"/><circle cx="55" cy="70" r="1.2"/><circle cx="90" cy="25" r="1.6"/>
+            <circle cx="140" cy="90" r="1.2"/><circle cx="170" cy="150" r="1.6"/><circle cx="20" cy="120" r="1.2"/>
+            <circle cx="115" cy="60" r="1.2"/><circle cx="65" cy="140" r="1.6"/>
+          </g>
+          <text x="24" y="235" font-family="Outfit, sans-serif" font-weight="700" font-size="19" fill="#FDF9F3">SONO TRANQUILO</text>
+          <text x="24" y="258" font-family="Outfit, sans-serif" font-weight="700" font-size="19" fill="#FDF9F3">DO BEBÊ</text>
+          <text x="24" y="285" font-family="Lora, serif" font-style="italic" font-size="9" fill="#E8E5F5">Um guia afetivo e prático para</text>
+          <text x="24" y="298" font-family="Lora, serif" font-style="italic" font-size="9" fill="#E8E5F5">ajudar seu bebê a dormir melhor</text>
+          <text x="24" y="315" font-family="Outfit, sans-serif" font-weight="600" font-size="8" fill="#F3A987">GUIA DIGITAL · 0 A 24 MESES</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="pains">
+  <div class="wrap">
+    <span class="eyebrow-mini">Isso te parece familiar?</span>
+    <h2 class="section-title">As noites estão difíceis e você já tentou de tudo</h2>
+    <p class="section-sub">Se alguma dessas frases faz sentido pra você agora, este guia foi escrito pensando exatamente na sua fase.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="pain-mark">✦</span><p>Seu bebê acorda várias vezes por noite e você não sabe se isso é normal.</p></div>
+      <div class="pain-card"><span class="pain-mark">✦</span><p>As sonecas do dia são curtas e imprevisíveis, e isso bagunça a rotina toda.</p></div>
+      <div class="pain-card"><span class="pain-mark">✦</span><p>Você já leu muita coisa sobre sono infantil, mas ainda não sabe por onde começar.</p></div>
+      <div class="pain-card"><span class="pain-mark">✦</span><p>Você está exausto e só queria um caminho simples e sem culpa para seguir.</p></div>
+    </div>
+  </div>
+</section>
+<section class="contents">
+  <div class="wrap">
+    <span class="eyebrow-mini">O que tem dentro</span>
+    <h2 class="section-title">Um passo a passo completo, capítulo por capítulo</h2>
+    <p class="section-sub">Nada de teoria solta: cada capítulo termina em algo prático que você pode aplicar ainda hoje à noite.</p>
+    <div class="chap-grid">
+      <div class="chap-card"><div class="chap-num">1</div><h3>Entendendo o sono do bebê</h3><p>Como funcionam os ciclos de sono e por que os despertares são esperados.</p></div>
+      <div class="chap-card"><div class="chap-num">2</div><h3>Janelas de sono por idade</h3><p>Tabela de referência de 0 a 24 meses para você nunca mais perder o timing.</p></div>
+      <div class="chap-card"><div class="chap-num">3</div><h3>O ambiente ideal</h3><p>Luz, temperatura, som e segurança no berço, explicados sem complicação.</p></div>
+      <div class="chap-card"><div class="chap-num">4</div><h3>Rotina de sono</h3><p>Um ritual passo a passo, com exemplos prontos para adaptar à sua família.</p></div>
+      <div class="chap-card"><div class="chap-num">5</div><h3>Métodos de treino de sono</h3><p>Panorama honesto das abordagens mais conhecidas, sem promessas milagrosas.</p></div>
+      <div class="chap-card"><div class="chap-num">6</div><h3>Regressões de sono</h3><p>Por que elas acontecem e como atravessar essas fases com mais leveza.</p></div>
+      <div class="chap-card bonus"><div class="chap-num">★</div><h3>Bônus: checklist + planner</h3><p>Checklist de ambiente e rotina, mais um planner semanal para imprimir.</p></div>
+    </div>
+  </div>
+</section>
+<section class="forwho">
+  <div class="wrap forwho-inner">
+    <div>
+      <span class="eyebrow-mini">Para quem é este guia</span>
+      <h2 class="section-title">Feito para famílias reais, não para casos perfeitos</h2>
+      <ul>
+        <li>Pais e mães de bebês de 0 a 24 meses que querem entender o sono do próprio filho.</li>
+        <li>Quem já tentou "deixar chorar" ou "não deixar chorar" e quer uma visão sem extremos.</li>
+        <li>Famílias que preferem entender o "porquê" antes de aplicar qualquer técnica.</li>
+        <li>Quem busca um material objetivo, sem precisar ler dezenas de artigos soltos.</li>
+      </ul>
+    </div>
+    <div class="forwho-visual">
+      <div class="stat"><b>7</b><span>capítulos práticos + bônus</span></div>
+      <div class="stat"><b>14</b><span>páginas direto ao ponto</span></div>
+      <div class="stat"><b>0–24</b><span>meses, com tabela por faixa etária</span></div>
+    </div>
+  </div>
+</section>
+<section class="pricing" id="comprar">
+  <div class="wrap">
+    <div class="price-card">
+      <div class="ribbon">Acesso imediato</div>
+      <span class="eyebrow-mini">Sono Tranquilo do Bebê</span>
+      <h3>Guia completo em PDF</h3>
+      <div class="price-old">R$ 47,00</div>
+      <div class="price-now"><sup>R$</sup>25<sup>,90</sup></div>
+      <p class="price-note">Pagamento único · acesso vitalício ao arquivo</p>
+      <ul class="price-list">
+        <li>PDF com 7 capítulos + bônus, ilustrado</li>
+        <li>Tabela de janelas de sono por idade</li>
+        <li>Checklist de ambiente e de rotina</li>
+        <li>Planner semanal de sono para imprimir</li>
+        <li>Leitura direto no celular, tablet ou computador</li>
+      </ul>
+      <a href="#" class="btn-block" id="checkout-link">Comprar agora</a>
+      <p class="price-secure">Pagamento processado com segurança pela Cakto</p>
+    </div>
+  </div>
+</section>
+<section class="faq">
+  <div class="wrap">
+    <span class="eyebrow-mini">Dúvidas comuns</span>
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Como recebo o ebook depois da compra?</span><span class="icon">+</span></div>
+        <div class="faq-a">Após a confirmação do pagamento, você recebe o link de acesso ao PDF por e-mail para baixar e guardar onde quiser.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Serve para qualquer idade de bebê?</span><span class="icon">+</span></div>
+        <div class="faq-a">O guia cobre a faixa de 0 a 24 meses, com uma tabela específica de janelas de sono para cada fase.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>O guia substitui uma consulta com pediatra?</span><span class="icon">+</span></div>
+        <div class="faq-a">Não. O conteúdo é educativo e não substitui a avaliação individual de um pediatra ou profissional de sono infantil.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Em que formato recebo o material?</span><span class="icon">+</span></div>
+        <div class="faq-a">Um arquivo em PDF, para ler no celular, tablet ou computador, sem necessidade de aplicativos extras.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap footer-inner">
+    <div class="brand-f">Sono Tranquilo do Bebê</div>
+    <p>Conteúdo educativo sobre sono infantil. Não substitui orientação médica individual — consulte sempre o pediatra do seu bebê.</p>
+    <p class="fine">© 2026 Bruno Silva. Todos os direitos reservados.</p>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen){ item.classList.add('open'); }
+    });
+  });
+</script>
+</body>
+</html>
